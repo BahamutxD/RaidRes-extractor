@@ -14,7 +14,13 @@ function extractData() {
     const itemElement = row.querySelector('a.m_b6d8b162');
     const itemLink = itemElement?.href || '';
     const itemName = itemElement?.innerText.trim() || '';
-    const playerComment = row.querySelector('td.comment-cell')?.innerText.trim() || '';
+    let playerComment = row.querySelector('td.comment-cell')?.innerText.trim() || '';
+
+    // Process SR+ values in the player comment
+    playerComment = playerComment.replace(/SR\+(\d+)/g, (match, p1) => {
+      const value = parseInt(p1, 10) * 100; // Multiply SR+ value by 100
+      return `SR+${value}`;
+    });
 
     // Extract the item ID from the item link
     const itemId = itemLink ? new URL(itemLink).searchParams.get('item') : null;
