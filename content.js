@@ -19,7 +19,7 @@ function extractData() {
     // Process SR+ values in the player comment
     playerComment = playerComment.replace(/SR\+(\d+)/g, (match, p1) => {
       const value = parseInt(p1, 10) * 100; // Multiply SR+ value by 100
-      return `SR+${value}`;
+      return `${value}`;
     });
 
     // Extract the item ID from the item link
@@ -43,7 +43,7 @@ function extractData() {
     playerEntry.items.push({
       id: itemId ? parseInt(itemId, 10) : null, // Ensure it's a number
       quality: quality,
-      note: playerComment || ''
+      sr_plus: playerComment || ''
     });
   });
 
