@@ -18,7 +18,7 @@ function extractData() {
 
     // Process SR+ values in the player comment
     playerComment = playerComment.replace(/SR\+(\d+)/g, (match, p1) => {
-      const value = parseInt(p1, 10) * 1; // Multiply SR+ value by 100
+      const value = parseInt(p1, 10) * 100; // Multiply SR+ value by 100
       return `${value}`;
     });
 
